@@ -1,0 +1,45 @@
+name: Build Kernel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  get-bootimg-url:
+    name: Getting latest boot.img's url
+    runs-on: ubuntu-latest
+    outputs:
+      BUILDDATE: ${{ steps.generate-bootimg-url.outputs.BUILDDATE }}
+      BOOTIMG_URL: ${{ steps.generate-bootimg-url.outputs.BOOTIMG_URL }}
+    steps:
+      - name: set boot.img url
+        id: generate-bootimg-url
+        run: |
+          json=$(mktemp)
+          curl -sLo $json https://download.lineageos.org/api/v2/devices/Spacewar/builds
+          echo "BUILDDATE=$(date --date=@$(jq -r '.[0].datetime' $json) +'%Y%m%d')" >> $GITHUB_OUTPUT
+          echo "BOOTIMG_URL=$(jq '.[0].files[] | select(.filename=="boot.img").url' $json)" >> $GITHUB_OUTPUT
+  build-kernel:
+    name: Build Kernel by ${{ github.actor }}
+    needs:
+      - get-bootimg-url
+    runs-on: self-hosted
+    #runs-on: ubuntu-latest
+    steps:
+      - name: Build LineageOS Spacewar 22.2 - nonkSU
+        uses: dabao1955/kernel_build_action@main
+        with:
+#          kernel-url: https://github.com/LineageOS/android_kernel_nothing_sm7325
+#          kernel-branch: lineage-22.2
+          kernel-url: https://github.com/adityayyy/kernel_nothing_sm7325
+          kernel-branch: ksun
+          config: vendor/lahaina-qgki_defconfig
+          bootimg-url: "${{ needs.get-bootimg-url.outputs.BOOTIMG_URL }}"
+          arch: arm64
+          aosp-gcc: true
+          aosp-clang: true
+          extra-cmd: LD=ld.lld AS=llvm-as
+          ccache: false
+          #android-version: 15-qpr2
+          aosp-clang-version: r536225
+          ksu: false
+          ksu-lkm: false
