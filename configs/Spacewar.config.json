@@ -1,0 +1,130 @@
+[  
+  {
+    "kernelSource": {
+      "name": "crDroid-Spacewar-KernelSU",
+      "repo": "https://github.com/crdroidandroid/android_kernel_nothing_sm7325",
+      "branch": "14.0",
+      "device": "Spacewar",
+      "defconfig": "vendor/lahaina-qgki_defconfig"
+    },
+    "withKernelSU": true,
+    "toolchains": [
+      {
+        "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
+        "branch": "master",
+        "name": "gas"
+      },
+      {
+        "repo": "https://gitlab.com/mizdrake7/zyc_clang.git",
+        "branch": "master",
+        "name": "clang"
+      }
+    ],
+    "enableCcache": true,
+    "params": {
+      "ARCH": "arm64",
+      "CROSS_COMPILE": "aarch64-linux-gnu-",
+      "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-",
+      "CROSS_COMPILE_COMPAT": "arm-linux-gnueabi-",
+      "CLANG_TRIPLE": "aarch64-linux-gnu-",
+      "AR": "",
+      "CC": "clang"
+    }
+  },
+  {
+    "kernelSource": {
+      "name": "crDroid-Spacewar",
+      "repo": "https://github.com/crdroidandroid/android_kernel_nothing_sm7325",
+      "branch": "14.0",
+      "device": "Spacewar",
+      "defconfig": "vendor/lahaina-qgki_defconfig"
+    },
+    "withKernelSU": false,
+    "toolchains": [
+      {
+        "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
+        "branch": "master",
+        "name": "gas"
+      },
+      {
+        "repo": "https://gitlab.com/mizdrake7/zyc_clang.git",
+        "branch": "master",
+        "name": "clang"
+      }
+    ],
+    "enableCcache": true,
+    "params": {
+      "ARCH": "arm64",
+      "CROSS_COMPILE": "aarch64-linux-gnu-",
+      "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-",
+      "CROSS_COMPILE_COMPAT": "arm-linux-gnueabi-",
+      "CLANG_TRIPLE": "aarch64-linux-gnu-",
+      "AR": "",
+      "CC": "clang"
+    }
+  },
+  {
+    "kernelSource": {
+      "name": "PixysOS-Spacewar",
+      "repo": "https://github.com/PixysOS-Devices/kernel_nothing_sm7325",
+      "branch": "fourteen",
+      "device": "Spacewar",
+      "defconfig": "vendor/lahaina-qgki_defconfig"
+    },
+    "withKernelSU": false,
+    "toolchains": [
+      {
+        "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
+        "branch": "master",
+        "name": "gas"
+      },
+      {
+        "repo": "https://gitlab.com/mizdrake7/zyc_clang.git",
+        "branch": "master",
+        "name": "clang"
+      }
+    ],
+    "enableCcache": true,
+    "params": {
+      "ARCH": "arm64",
+      "CROSS_COMPILE": "aarch64-linux-gnu-",
+      "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-",
+      "CROSS_COMPILE_COMPAT": "arm-linux-gnueabi-",
+      "CLANG_TRIPLE": "aarch64-linux-gnu-",
+      "AR": "",
+      "CC": "clang"
+    }
+  },
+  {
+    "kernelSource": {
+      "name": "PixysOS-Spacewar-KernelSU",
+      "repo": "https://github.com/PixysOS-Devices/kernel_nothing_sm7325",
+      "branch": "fourteen-ksu",
+      "device": "Spacewar",
+      "defconfig": "vendor/lahaina-qgki_defconfig"
+    },
+    "withKernelSU": false,
+    "toolchains": [
+      {
+        "repo": "https://android.googlesource.com/platform/prebuilts/gas/linux-x86",
+        "branch": "master",
+        "name": "gas"
+      },
+      {
+        "repo": "https://gitlab.com/mizdrake7/zyc_clang.git",
+        "branch": "master",
+        "name": "clang"
+      }
+    ],
+    "enableCcache": true,
+    "params": {
+      "ARCH": "arm64",
+      "CROSS_COMPILE": "aarch64-linux-gnu-",
+      "CROSS_COMPILE_ARM32": "arm-linux-gnueabi-",
+      "CROSS_COMPILE_COMPAT": "arm-linux-gnueabi-",
+      "CLANG_TRIPLE": "aarch64-linux-gnu-",
+      "AR": "",
+      "CC": "clang"
+    }
+  }
+]
