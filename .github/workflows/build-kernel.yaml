@@ -1,0 +1,26 @@
+name: Build Kernel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-kernel:
+    name: Build Kernel by ${{ github.actor }}
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build crDroid Spacewar 14.0 - kSU
+        uses: dabao1955/kernel_build_action@main
+        with:
+          kernel-url: https://github.com/crdroidandroid/android_kernel_nothing_sm7325
+          branch: "14.0"
+          config: vendor/lahaina-qgki_defconfig
+          bootimg-url: https://sourceforge.net/projects/crdroid/files/Spacewar/10.x/recovery/boot-20240209.img/download
+          arch: arm64
+          aosp-gcc: true
+          aosp-clang: true
+          ccache: true
+          python-27: false
+          android-version: 14
+          aosp-clang-version: r487747c
+          ksu: true
+          ksu-lkm: false
